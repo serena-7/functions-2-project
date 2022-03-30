@@ -124,4 +124,12 @@ const purchases = [{"owner":"Barry","price":103},{"owner":"Bob","price":75},
 
 // CODE HERE
 const bobsTotal = purchases.filter((purch) => purch.owner === "Bob").reduce((acc, purch) => acc + purch.price, 0)
-console.log(bobsTotal);
+// console.log(bobsTotal);
+
+//how scott showed us how to do it
+const bobsTotal2 = purchases.reduce((acc, purchase) => {
+  if(purchase.owner === 'Bob'){
+    return acc + purchase.price;
+  } else return acc;
+}, 0);
+// console.log(bobsTotal2);
