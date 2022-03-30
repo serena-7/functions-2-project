@@ -6,6 +6,9 @@
 */
 
 // CODE HERE
+const multiply = (num1, num2, callback) => {
+  return callback(num1 * num2);
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -36,7 +39,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const first = (arr, callback) => callback(arr[0]);
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -56,7 +59,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+const last = (arr, callback) => callback(arr[arr.length-1]);
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -78,7 +81,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const contains = (arr, name, callback) => callback(arr.includes(name));
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -103,6 +106,9 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+const uniq = (arr, callback) => {
+  return callback([... new Set(arr)]);
+}
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -112,7 +118,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+// uniq(names, uniqArr => console.log(`The new names array with all the duplicate items removed is ${uniqArr}`))
 
 
 ////////// PROBLEM 6 //////////
@@ -123,7 +129,11 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE 
-
+const each = (arr, callback) => {
+  for(let i = 0; i < arr.length; i++){
+    callback(arr[i],i);
+  }
+}
 
 /*
   Invoke the each function, passing in the names array and a callback function.
@@ -133,7 +143,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
-
+// each(names, (item, index) => console.log(`The item at index ${index} is ${item}`));
 
 ////////// PROBLEM 7 //////////
 
@@ -141,6 +151,7 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
   Write a function called getUserById that takes in three parameters: an array of objects (users), an id and a callback, and searches for the user with a matching id.
   When the correct user object is found, invoke the callback with the user object as an argument.
 */
+
 
 // Do not edit the code below.
 var users = [
@@ -166,6 +177,13 @@ var users = [
 // Do not edit the code above.
 
 // CODE HERE 
+const getUserById = (users, id, callback) => {
+  for(let i = 0; i < users.length; i++){
+    if(users[i].id === id){
+      callback(users[i]);
+    }
+  }
+}
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
@@ -193,6 +211,7 @@ var users = [
 */
 
 // CODE HERE
+const addingFactory = x => y => x + y;
 
 /*
   Now that you have addingFactory, you can create other
@@ -207,6 +226,7 @@ var users = [
 */
 
 // CODE HERE
+const addTen = addingFactory(10);
 
 /*
   Now the inner function is stored in the addTen variable! 
@@ -219,6 +239,7 @@ var users = [
 */
 
 // CODE HERE
+addTen(3);
 
 /*
   Let's make another function from the addingFactory. 
@@ -232,3 +253,5 @@ var users = [
 */
 
 // CODE HERE
+const addSeven = addingFactory(7);
+console.log(addSeven(7));
